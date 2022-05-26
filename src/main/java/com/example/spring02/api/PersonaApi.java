@@ -3,10 +3,12 @@ package com.example.spring02.api;
 import com.example.spring02.exception.ModeloNotFoundException;
 import com.example.spring02.model.Persona;
 import com.example.spring02.service.PersonaService;
+import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +39,7 @@ public class PersonaApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Persona> findAll(@PathVariable("id") long id){
+    public ResponseEntity<Persona> findById(@PathVariable("id") long id){
         Persona persona = personaService.findById(id);
         if(persona.getId() == 0){
             throw  new ModeloNotFoundException("ID no encontrado");
