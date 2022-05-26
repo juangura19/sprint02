@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,9 +101,8 @@ public class PersonServiceImplTest {
 
     @Test
     public void when_deletePersona_ok(){
-        personaRepository = mock(PersonaRepository.class);
         doNothing().when(personaRepository).deleteById(anyLong());
-        personaRepository.deleteById(1L);
+        personaService.delete(1L);
 
         verify(personaRepository).deleteById(1L);
     }

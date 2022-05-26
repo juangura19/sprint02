@@ -90,8 +90,8 @@ public class PersonaApiTest {
             .thenReturn(persona);
 
         mockMvc.perform(post("/personas")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(asJsonString(body)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(body)))
             .andExpect(status().isCreated())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.nombres").value("nombre 01"))
